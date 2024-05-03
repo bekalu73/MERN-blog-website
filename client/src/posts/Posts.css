@@ -1,0 +1,34 @@
+.posts {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 20px;
+  margin-top: 35px;
+}
+/* .posts:nth-child(even) .texts {
+  order: -1;
+} */
+/* .texts {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 30px;
+} */
+.texts > h2 {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.info {
+  display: flex;
+  gap: 20px;
+}
+.author {
+  color: #333;
+  font-weight: bold;
+}
+time {
+  color: #888;
+}
+.summary {
+  margin: 10px 0;
+  line-height: 1.8rem;
+}
