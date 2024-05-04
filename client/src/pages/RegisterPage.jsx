@@ -1,14 +1,14 @@
 import React from "react";
 
-function loginPage() {
+function RegisterPage() {
   return (
-    <form className="login">
-      <h2>Login Here!</h2>
+    <form className="register">
+      <h2>Register Here!</h2>
       <input type="text" placeholder="Enter Username" />
       <input type="password" placeholder="Enter Password" />
-      <button>Login</button>
+      <button>Register</button>
     </form>
   );
 }
 
-export default loginPage;
+export default RegisterPage;
