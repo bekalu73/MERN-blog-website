@@ -1,12 +1,18 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Navbar from "./navbar/Navbar";
-import Posts from "./posts/Posts";
+import Layout from "./layout/Layout";
+import IndexPage from "./pages/IndexPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Posts />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<IndexPage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
