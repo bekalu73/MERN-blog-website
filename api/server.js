@@ -1,18 +1,22 @@
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import LoginRoute from "./routes/auth.js";
 import RegisterRoute from "./routes/auth.js";
+import ProfileController from "./routes/auth.js";
 
 dotenv.config();
 const app = express();
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/", LoginRoute);
 app.use("/", RegisterRoute);
+app.use("/", ProfileController);
 
 mongoose
   .connect(process.env.MONGO_URI)
