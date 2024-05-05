@@ -4,12 +4,13 @@ function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const register = async (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/register", {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: { "Content-type": "application/json" },
+      credentials: "include",
     });
     if (!response.ok) {
       return console.log("Registration Faild");
@@ -19,7 +20,7 @@ function RegisterPage() {
   };
 
   return (
-    <form className="register" onSubmit={register}>
+    <form className="register" onSubmit={registerHandler}>
       <h2>Register Here!</h2>
       <input
         type="text"
