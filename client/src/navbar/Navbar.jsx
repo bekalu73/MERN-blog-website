@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./Navbar.css";
+import { UserContext } from "../context/UserContext";
 
 function Navbar() {
-  const [username, setUsername] = useState("");
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
-  const logout = (e) => {
-    e.prevetDefault();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    fetch("http://localhost:5000/profile", {
+      credentials: "include",
+      method: "POST",
+    });
+    setUserInfo(null);
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -16,14 +24,15 @@ function Navbar() {
     })
       .then((response) => response.json())
       .then((userInfo) => {
-        setUsername(userInfo.username);
+        setUserInfo(userInfo.username);
       })
       .catch((error) => {
         console.error("Error fetching profile:", error);
       });
   }, []);
 
-  console.log(username);
+  const username = userInfo?.username;
+  // console.log(username);
 
   return (
     <header>

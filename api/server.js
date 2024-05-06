@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import LoginRoute from "./routes/auth.js";
 import RegisterRoute from "./routes/auth.js";
 import ProfileController from "./routes/auth.js";
+import LogoutController from "./routes/auth.js";
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use("/", LoginRoute);
 app.use("/", RegisterRoute);
 app.use("/", ProfileController);
+app.use("/", LogoutController);
 
 mongoose
   .connect(process.env.MONGO_URI)

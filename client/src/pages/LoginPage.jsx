@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
+  const { setUserInfo } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const loginHandler = async (e) => {
@@ -19,10 +21,10 @@ function LoginPage() {
       return console.log("Login Faild");
     } else {
       console.log("Successfully Logged in");
-      setRedirect(true);
-    }
-    if (redirect) {
-      return navigate("/");
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo);
+        navigate("/");
+      });
     }
   };
 

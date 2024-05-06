@@ -20,7 +20,10 @@ const LoginController = async (req, res) => {
       {},
       (err, token) => {
         if (err) return res.status(400).json("Error", err);
-        return res.cookie("token", token).status(200).json(token);
+        return res
+          .cookie("token", token)
+          .status(200)
+          .json({ username, id: user._id });
       }
     );
   } catch (err) {
