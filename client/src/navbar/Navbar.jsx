@@ -6,6 +6,10 @@ import "./Navbar.css";
 function Navbar() {
   const [username, setUsername] = useState("");
 
+  const logout = (e) => {
+    e.prevetDefault();
+  };
+
   useEffect(() => {
     fetch("http://localhost:5000/profile", {
       credentials: "include",
@@ -32,7 +36,7 @@ function Navbar() {
             <Link to="/create" className="login">
               Create New Post
             </Link>
-            <a href="">Log Out</a>
+            <a onClick={logout}>Log Out</a>
           </>
         )}
         {!username && (
